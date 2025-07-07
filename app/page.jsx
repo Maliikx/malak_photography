@@ -1,35 +1,35 @@
-
-import React from 'react'
+"use client"
+import Services from "@/components/sections/Services";
 import Image from "next/image";
-import Frame from './sections/Frame';
-import Services from './sections/Services';
+import React from 'react'
+
+
+export default function Home() {
 
 const imgs = [
-    {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.54.jpeg",
-      className:" rotate-2 border-white border-5 sticky bottom-9 z-4",
-    },
-    {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (1).jpeg",
-      className:" rotate-3 border-white border-5 sticky bottom-9 z-3",
-    },
-    {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (2).jpeg",
-      className:" rotate-0 border-white border-5 sticky bottom-9 z-2",
-    },
-    {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (3).jpeg",
-      className:" rotate-[-3deg] border-white border-5 sticky bottom-9 z-1",
-    },
-    {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55.jpeg",
-      className:" rotate-[-1deg] border-white border-5 sticky bottom-9 z-0",
-    },
-    
-  ]
+  {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.54.jpeg",
+    className:" rotate-2 border-white border-5 sticky bottom-9 z-4",
+  },
+  {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (1).jpeg",
+    className:" rotate-3 border-white border-5 sticky bottom-9 z-3",
+  },
+  {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (2).jpeg",
+    className:" rotate-0 border-white border-5 sticky bottom-9 z-2",
+  },
+  {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55 (3).jpeg",
+    className:" rotate-[-3deg] border-white border-5 sticky bottom-9 z-1",
+  },
+  {src:"/imgs/WhatsApp Image 2025-04-30 at 14.07.55.jpeg",
+    className:" rotate-[-1deg] border-white border-5 sticky bottom-9 z-0",
+  },
+  
+]
 
-function Body() {
+  
   return (
-      
-      <div className='bg-black z-5  relative w-full pb-26'>
-        <div className='m-28 flex flex-col gap-40'>
+    <>
             <div className=" flex  gap-20 justify-evenly flex-row ">
-                <div className="  bg-ambcer-700  w-[50%] bg-ambser-500    ">
+                <div className=" w-[50%]   ">
               <div className="sticky top-[160px] text-2xl">
                 <h1 className="text-white/50 "><div className='text-white'>++ PORTFOLIO</div> | PORTIATS | STREETS | VIDEOS </h1>
                 {/* <h1 className="text-white/50">++ STREETS</h1>
@@ -61,10 +61,7 @@ function Body() {
               </div>
                 </div>
               </div>
-            <Services/>
-        </div>
-      </div>
-  )
+              <Services/>
+          </>
+  );
 }
-
-export default Body

@@ -1,11 +1,13 @@
 'use client'
 import React, { useRef, useState } from 'react'
 import Image from "next/image";
+import Link from "next/link";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 
 function Services() {
+  
   const ref = useRef(null)
   const animation_left1 = useRef(null)
   const animation_left2 = useRef(null)
@@ -134,133 +136,69 @@ function Services() {
 
     
   }
+  const sections = [
+    {
+      key: 'left',
+      onHover: handlecHover_left,
+      className: 'move-left',
+      images: [
+        { src: '/imgs/opt4.jpeg', className: 'border-5 rotate-5 absolute' },
+        { src: '/imgs/opt2.jpeg', className: 'move-left-1 border-white border-5 rotate-3 absolute' },
+        { src: '/imgs/opt1.jpeg', className: 'move-left-2 border-white border-5 rotate-[-1deg]' }
+      ]
+    },
+    {
+      key: 'center',
+      onHover: handlecHover,
+      className: 'move-center',
+      images: [
+        { src: '/imgs/wed6.jpeg', className: 'move1 border-white border-5 rotate-5 absolute' },
+        { src: '/imgs/wed3.jpeg', className: 'border-white border-5 rotate-3' },
+        { src: '/imgs/wed1.jpeg', className: 'move2 border-white border-5 rotate-[-1deg] absolute' }
+      ]
+    },
+    {
+      key: 'right',
+      onHover: handlecHover_right,
+      className: 'move-right',
+      images: [
+        { src: '/imgs/opt3.jpeg', className: 'border-white border-5 rotate-5 absolute' },
+        { src: '/imgs/portraits.jpeg', className: 'move-right-1 border-white border-5 rotate-3' },
+        { src: '/imgs/fashion.jpeg', className: 'move-right-2 border-white border-5 rotate-[-1deg] absolute' }
+      ]
+    }
+  ];
   
 
   return (
     <div className='  flex flex-col gap-10 justify-center items-center'>
-        <h1 className='text-3xl'>Services</h1>
+        <h1 className='text-3xl'>SERVICES</h1>
         <div className='flex  gap-20'>
         <div className=' flex flex-col gap-3  justify-center items-center'>
         <div  className='flex flex-row gap-42 justify-center w-full '>
 
-        {/* Left */}
-
-        <div 
-          className=' flex flex-row justify-center '>
-            {/* tigger div */}
-            <div
-             onMouseEnter={handlecHover_left} 
-             onMouseLeave={handlecHover_left}
-            className="absolute z-5  w-[360px] h-[535]"></div>
-            <div   className='  border-5 rotate-5 absolute'>
-            
-              <Image
-            
-                  src="/imgs/opt4.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-            <div  className='move-left-1  border-white  border-5 rotate-3 absolute '>
-              <Image
-                  src="/imgs/opt2.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className=' object-cover h-full '
-                  />
-                  </div>
-            <div  className=' move-left-2 border-white border-5 rotate-[-1deg]  '>
-              <Image
-                  src="/imgs/opt1.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-          </div>
-
-          {/* Center */}
-          <div 
-          className=' flex flex-row justify-center '>
-            {/* tigger div */}
-            <div
-             onMouseEnter={handlecHover} 
-             onMouseLeave={handlecHover}
-            className="absolute z-5  w-[360px] h-[535]"></div>
-            <div   className='move1  border-white border-5 rotate-5 absolute'>
-            
-              <Image
-            
-                  src="/imgs/wed6.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-            <div  className='  border-white  border-5 rotate-3  '>
-              <Image
-                  src="/imgs/wed3.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className=' object-cover h-full '
-                  />
-                  </div>
-            <div  className='move2 border-white border-5 rotate-[-1deg]  absolute'>
-              <Image
-                  src="/imgs/wed1.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-          </div>
-
-          {/* Right */}
-
-          <div 
-          className=' flex flex-row justify-center '>
-            {/* tigger div */}
-            <div
-             onMouseEnter={handlecHover_right} 
-             onMouseLeave={handlecHover_right}
-            className="absolute z-5  w-[360px] h-[535]"></div>
-            <div   className='border-white border-5 rotate-5 absolute'>
-            
-              <Image
-            
-                  src="/imgs/opt3.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-            <div  className='move-right-1  border-white  border-5 rotate-3  '>
-              <Image
-                  src="/imgs/portraits.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className=' object-cover h-full '
-                  />
-                  </div>
-            <div  className='move-right-2 border-white border-5 rotate-[-1deg]  absolute'>
-              <Image
-                  src="/imgs/fashion.jpeg"
-                  alt=""
-                  width={350}
-                  height={1133}
-                  className='object-cover h-full'
-                  />
-                  </div>
-          </div>
+        {sections.map(({ key, onHover, images }) => (
+          <Link href="/portfolio">
+            <div key={key} className="flex flex-row justify-center">
+              <div
+                onMouseEnter={onHover}
+                onMouseLeave={onHover}
+                className="absolute z-5 w-[360px] h-[535]"
+              ></div>
+              {images.map(({ src, className }, index) => (
+                <div key={index} className={className}>
+                        <Image
+                          src={src}
+                          alt=""
+                          width={350}
+                          height={1133}
+                          className="object-cover h-full"
+                        />
+                </div>
+                ))}
+              </div>
+          </Link>
+))}
 
         </div>
         <div className=' flex flex-row justify-between items-center select-none '>
@@ -290,6 +228,9 @@ function Services() {
     
     </div>
   )
+
+
+  
 }
 
 export default Services
