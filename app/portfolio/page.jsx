@@ -1,16 +1,38 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from 'react';
-import allPicsData from '../data/allPicsData';
+import localFont from "next/font/local";
 
-function Portfolio() {
+import { useRouter } from "next/navigation";
+import { useState, useMemo } from "react";
+import allPicsData from "../data/allPicsData";
 
-  const [selectedCategory, setSelectedCategory] = useState('all');
+const spacetroops = localFont({
+  src: [
+    {
+      path: "../fonts/Spacetroops-Free-2.ttf",
+      weight: "600",
+      style: "bold",
+    },
+  ],
+});
+function Portfolio2() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const router = useRouter();
+  const style = [
+    "h-30 xl:h-50  2xl:h-70" ,
+    // lg:h-70",
+    "h-100 xl:h-60 2xl:h-100 " ,
+    // lg:h-100",
+    "h-70 xl:h-130 2xl:h-150 " ,
+    // lg:h-150",
+    "h-30 xl:h-30 2xl:h-50",
+    "h-80 xl:h-80 2xl:h-120",
+  ];
 
   const filteredImages = useMemo(() => {
-    return selectedCategory === 'all'
+    return selectedCategory === "all"
       ? allPicsData
       : allPicsData.filter((img) => img.category === selectedCategory);
   }, [allPicsData, selectedCategory]);
@@ -18,56 +40,52 @@ function Portfolio() {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+  console.log(allPicsData);
 
   return (
     <>
-    <div className='flex flex-row justify-between min-h-[70vh] pt-10'>
-      <div className=' flex flex-wrap gap-30 px-10 w-4/3'>
-        {filteredImages.map((img) => (
-            <Link key={img.id} href='/'>
-          <div  className='flex flex-col gap-3'>
-              <div  className='w-70 overflow-hidden  hover:cursor-pointer  aspect-[3/4.5] relative transition-all duration-150 ease-in'>
-                <Image
-                key={img.id}
-                src={img.thumbnail}
-                alt={img.alt}
-                fill
-                style={{ objectFit: 'cover',
-                  overflow: 'clip'
-                 }}
-              
-                />
+      <div className="min-h-screen pt-0 flex flex-col gap-10  ">
+        <div className="w-full uppercase flex justify-center text-xl">
+          <h1 className={`font-bold `}>(Portfolio)</h1>
+        </div>
+        {allPicsData.map((session, i) => (
+          <div key={i} className="flex flex-col gap-10  ">
+            <div className="flex flex-row justify-between border-t pt-5 ">
+              <div className="flex flex-col">
+                <h1 className="text-xl uppercase">{session.title}</h1>
+                <h1 className="text-sm text-white/75 uppercase">
+                  {session.category}
+                </h1>
               </div>
-            <h1 className='uppercase'>({img.title})</h1>
-            <div className='absolute border-black border-0 hover:border-3 hover:cursor-pointer  w-70 aspect-[3/4.5]  transition-all duration-300 ease-in'>
+              <Link href={`/portfolio/${session.id}`} key={session.id}>
+                <button className="border h-full px-5  hover:bg-white hover:text-black cursor-pointer transition-all duration-200 ease-in">
+                  (View Album)
+                </button>
+              </Link>
             </div>
+
+            <div className="flex   flex-row overflow-hidden  border-t  justify-between  min-h-[70vh]">
+              {session.images.slice(0, 5).map((img, i) => (
+                <div
+                  key={i}
+                  className={`"  aspect-[3/4.5]  relative border-5  overflow-hidden  transition-all duration-200 ease-in" ${style[i]}`}
+                >
+                  <Image
+                    src={img}
+                    style={{ objectFit: "cover" }}
+                    fill
+                    className="  "
+                    alt={`Image ${i}`}
+                  />
+                </div>
+              ))}
+            </div>
+
           </div>
-            </Link>
         ))}
-       
       </div>
-      <div className='w-1/3'>
-      <div className='sticky top-39 flex flex-col gap-10 pl-5'>
-        <ul className='uppercase select-none'>
-        {['all', 'weddings', 'portraits', 'fashion', 'commerial'].map((category) => (
-              <li
-                key={category}
-                className={` w-fit cursor-pointer hover:text-white  ${
-                  selectedCategory === category ? ' underline' : 'text-gray-500'
-                }`}
-                onClick={() => handleCategoryClick(category)}
-              >
-                {category}
-              </li>
-            ))}
-        </ul>
-        <p className='text-white/75'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit alias, vel dolor unde, illo asperiores esse officiis accusamus aspernatur, a dolores. Ipsam porro dignissimos corporis nesciunt incidunt necessitatibus ad libero.</p>
-      </div>
-      </div>
-    </div>
     </>
-  )
+  );
 }
 
-export default Portfolio;
+export default Portfolio2;

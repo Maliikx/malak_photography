@@ -7,12 +7,8 @@ const nextConfig = {
           use: ["@svgr/webpack"],
           type: "javascript/auto", // Fixes conflicts with other loaders
         });
-    
         return config;
       },
-    
-    
-    
 };
 
 export default nextConfig;

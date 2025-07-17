@@ -2,10 +2,11 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Frame from "@/components/sections/Frame";
 import Footer from "@/components/sections/Footer";
+import {ReactLenis} from './utils/lenis.js'
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const geistSans = Geist({
@@ -26,16 +27,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} antialiased`}
-      >
-        <Frame/>
-
-        <div className="bg-black z-5  relative w-full pb-26">
-          <div className="m-28 flex flex-col gap-40">{children}</div>
-          </div>
-        <Footer/>
-      </body>
+      {/* <ReactLenis> */}
+        <body className={`${inter.className} antialiased`}>
+          <Frame />
+          <main className="bg-black z-5   relative w-full pb-26">
+            <div className="m-28 ">{children}</div>
+          </main>
+          <Footer />
+        </body>
+      {/* </ReactLenis> */}
     </html>
   );
 }
