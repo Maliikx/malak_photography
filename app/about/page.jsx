@@ -1,11 +1,12 @@
+import AnimatedLine from '@/components/AnimatedLine'
 import React from 'react'
 
 const About = () => {
   return (
-    <div className='min-h-[80vh] '>
-        <div className='flex flex-col gap-5 '>
+    <div className=' '>
+        <div className='flex flex-col gap-10 '>
             <h1 className='uppercase w-full text-center '>(About me?)</h1>
-            <hr />
+            <AnimatedLine/>
         </div>
         <div className='flex flex-row justify-around pt-20'>
             <div className="w-1/2"> 

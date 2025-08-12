@@ -30,8 +30,9 @@ export default function RootLayout({ children }) {
       {/* <ReactLenis> */}
         <body className={`${inter.className} antialiased`}>
           <Frame />
-          <main className="bg-black z-5   relative w-full pb-26">
-            <div className="m-28 ">{children}</div>
+          <main className="bg-black z-5   relative w-full pb-10">
+            <div className="m-28 min-h-[60vh] ">{children}</div>
+            <h1 className="w-full text-center uppercase">(Scroll to book now!)</h1>
           </main>
           <Footer />
         </body>

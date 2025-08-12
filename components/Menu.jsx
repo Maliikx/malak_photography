@@ -89,11 +89,11 @@ const Menu = ({setIsMenuOpen, isMenuOpen, className = '' }) => {
     }
   }, [isMenuOpen]);
   // if (!isMenuOpen) return null;
-
+//TODO: make the page transition
   const handleLinkClick = () => {
     // setTimeout(() => {
-    //   setIsMenuOpen(false);
-    // }, 1000); // delay in ms before closing
+      setIsMenuOpen(false);
+    // }, 800); // delay in ms before closing
   };
   
 
@@ -123,7 +123,7 @@ const Menu = ({setIsMenuOpen, isMenuOpen, className = '' }) => {
         </div>
         <div className="w-full flex flex-col items-start  text-9xl ">
           <a ref={contactRef} className="self-start hover:text-white  " href="">
-            Contact
+            Book now
           </a>
 
           <div className="flex flex-row text-xl gap-6 justify-end">

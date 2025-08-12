@@ -192,7 +192,7 @@ export default function Services() {
   const handleClick = () => {
     router.push("/portfolio2");
   };
-
+//TODO: fix post animation alignment
   return (
     <div className="  flex flex-col gap-10 justify-center items-center">
       <h1 className="text-3xl">SERVICES</h1>

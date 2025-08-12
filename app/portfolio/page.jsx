@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRouter } from "next/navigation";
 import { useState, useMemo } from "react";
 import allPicsData from "../data/allPicsData";
+import AnimatedLine from "@/components/AnimatedLine";
 
 const spacetroops = localFont({
   src: [
@@ -57,7 +58,7 @@ function Portfolio() {
 
               duration: 1.2,
               ease: "power2.out",
-              stagger: 0.05, // Stagger images within the session
+              stagger: 0.1, // Stagger images within the session
               delay: 0.2, // Initial delay for the session
               scrollTrigger: {
                 trigger: sessionEl, // Trigger on the session container
@@ -86,12 +87,13 @@ function Portfolio() {
 
   return (
     <div ref={containerRef} className="min-h-screen pt-0 flex flex-col gap-10">
-      <div className="w-full uppercase flex justify-center text-xl">
-        <h1 className="font-bold">(Portfolio)</h1>
+      <div className="w-full uppercase flex justify-center ">
+        <h1 className="">(Portfolio)</h1>
       </div>
       {allPicsData.map((session, index) => (
         <div key={index} className="flex flex-col gap-10">
-          <div className="flex flex-row justify-between border-t pt-5">
+          <AnimatedLine/>
+          <div className="flex flex-row justify-between ">
             <div className="flex flex-col">
               <h1 className="text-xl uppercase">{session.title}</h1>
               <h1 className="text-sm text-white/75 uppercase">
@@ -99,7 +101,7 @@ function Portfolio() {
               </h1>
             </div>
             <Link href={`/portfolio/${session.id}`} key={session.id}>
-              <button className="border h-full px-5 hover:bg-white hover:text-black cursor-pointer transition-all duration-200 ease-in">
+              <button className="border h-full px-5 hover:bg-white hover:text-black cursor-pointer transition-colors duration-200 ease-in">
                 (View Album)
               </button>
             </Link>
@@ -111,7 +113,7 @@ function Portfolio() {
             {session.images.slice(0, 5).map((img, i) => (
               <div
                 key={i}
-                className={` bg-white aspect-[3/4.5] relative border-5 overflow-hidden transition-all duration-200 ease-in ${style[i]}`}
+                className={` bg-white aspect-[3/4.5] relative border-5 overflow-hidden ${style[i]}`}
               >
                 <Image
                   src={img}

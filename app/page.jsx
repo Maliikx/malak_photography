@@ -34,19 +34,15 @@ export default function Home() {
      <div className="h-[100vh] "></div>
         <div className=" flex  gap-20 justify-evenly flex-row ">
           <div className=" flex-1   ">
-            <div className="sticky top-[160px] text-2xl">
-              <h1 className="text-white/50 ">
-                <span className="text-white">++ PORTFOLIO</span> | PORTIATS |
-                STREETS | VIDEOS{" "}
+            <div className="sticky top-[160px] ">
+              <h1 className="text-white text-6xl">
+                "With every flash a memory is born"
               </h1>
               {/* <h1 className="text-white/50">++ STREETS</h1>
                   <h1 className="text-white/50">++ PORTIATS</h1>
                   <h1 className="text-white/50">++ VIDEOS</h1> */}
-              <p className="mt-[35rem] sticky bottom-40">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut
-                molestie lacus. Etiam et pulvinar mauris. Morbi cursus commodo
-                magna congue condimentum. Vestibulum vitae placerat nisl, vitae
-                aliquet lacus."
+              <p className="mt-[35rem] text-xl sticky bottom-40">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi placeat eligendi expedita, voluptate itaque dolore illum debitis amet saepe delectus iste vitae inventore mollitia sint. Eius laboriosam quisquam dolorum quo.
               </p>
             </div>
             {/* <img src="/imgs/logo2.png"/> */}
