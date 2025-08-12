@@ -32,6 +32,15 @@ const allPicsData = [
       "/imgs/portraits.jpeg",
       
     ],
+    data: [
+      {image : "/imgs/portraits.jpeg", text:''},
+      {image :"/imgs/port2.jpeg", text:''},
+      {image :"/imgs/port1.jpeg", text:''},
+      {image :"/imgs/opt2.jpeg", text:''},
+      {image :"/imgs/opt3.jpeg", text:''},
+      {image :"/imgs/port1.jpeg", text:''},
+      {image :"/imgs/portraits.jpeg", text:''},
+    ]
   },
   {
     id: "4th-of-july",

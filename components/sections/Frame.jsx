@@ -7,9 +7,11 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Menu from "../Menu";
+import MalaksLogo from "./MalaksLogo";
 
 gsap.registerPlugin(ScrollTrigger);
 function Frame() {
+  console.log(MalaksLogo); // should be a function, NOT an object
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuText, setMenuText] = useState('Menu');
   const logoRef = useRef(null);
@@ -23,47 +25,8 @@ function Frame() {
 
     const logo = logoRef.current;
 
-    // if (isMenuOpen) {
-    //   gsap.to(logo, {
-    //     top: '60px',
-    //     left: '100px',
-    //     translateX: '0%',
-    //     translateY: '0%',
-    //     scale: 0.2,
-    //     duration: 0.5,
-    //     ease: 'power2.out',
-    //   });
-    // }else if(!isMenuOpen & pathname === '/'){
-    //   // gsap.fromTo(logo, 
-    //   //   {
-    //   //     top: '60px',
-    //   //     left: '100px',
-    //   //     translateX: '0%',
-    //   //     translateY: '0%',
-    //   //     scale: 0.2,
-    //   //     duration: 1,
-    //   //     ease: 'power2.out',
-    //   //   },
-    //   //   {
-    //   //   top: '50%',
-    //   //   left: '50%',
-    //   //   translateX: '0%',
-    //   //   translateY: '0%',
-    //   //   scale: 1,
-    //   //   duration: 1,
-    //   //   ease: 'power2.out',}
-      
-    //   // )
-    // }
     if (pathname === '/') {
-      gsap.set(logo, {
-        top: '50%',
-        left: '50%',
-        translateX: '0%',
-        translateY: '0%',
-        cursor: 'default',
-        scale: 1,
-      });
+     
 
 
     gsap.to(logo, {
@@ -74,21 +37,23 @@ function Frame() {
         scrub: 0.5, // Smoothly tie animation to scroll progress
         // markers: process.env.NODE_ENV === "development", // Debugging markers
       },
-      top: "60px",
-      left: "100px",
-      translateX: "0%",
-      translateY: "0%",
-      scale: 0.2,
-      cursor: 'pointer',
-      ease: "power1.inOut",
+      top: "30px",
+      left: "30px",
+      translateX: '50%',
+      translateY: '50%',
+      scale: 1,
+      ease: "power2.inOut",
     });
   }else {
-    gsap.set(logo, {
-      top: '60px',
-      left: '100px',
+    gsap.to(logo, {
+      top: "30px",
+      left: "30px",
       translateX: '0%',
       translateY: '0%',
-      scale: 0.2,  });
+
+
+    });
+    
     }
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -117,29 +82,30 @@ function Frame() {
   return (
     <>
      
-        <Menu className={ ` ${isMenuOpen? 'opacity-100 pointer-events-auto ' : 'opacity-0 pointer-events-none '}`} isMenuOpen={isMenuOpen}/>
+        <Menu className={ ` ${isMenuOpen? 'opacity-100 pointer-events-auto ' : 'opacity-0 pointer-events-none '}`} setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>
 
         <div className={`topRight  fixed z-7 top-[20px] right-[20px]  border-r-3 border-white border-t-3 w-20 h-20 flex justify-center items-center transition-all duration-300 ease-in-out ${isMenuOpen? 'bg-white text-black': ''}`}>
         {" "}
-        <span className={` cursor-pointer select-none hover:underline `} onClick={showMenu}>{menuText}</span>
+        <span className={` p-5 py-7 cursor-pointer select-none hover:underline `} onClick={showMenu}>{menuText}</span>
       </div>
     <div className="all fixed z-6 ">
-      <Link href="/">
+
         <div
           ref={logoRef}
-          className={`image  as fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[50vh] aspect-[1394/843]  ${
+          className={`image  as fixed   ${
             pathname === '/'
-              ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
-              : 'top-[60px] left-[100px] scale-[0.2]'
+              ? 'top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 scale-500 '
+              : 'top-[30px] left-[30px] '
           }`}
         >
-          <Image fill style={{ objectFit: "cover", }} src="/imgs/logo2.png" />
-        </div>
-      </Link>
 
-      <Link href="/">
+                <div className="w-[150px] h-auto"><MalaksLogo/></div>
+
+        </div>
+
+
         <div className="topLeft text-white  fixed top-[20px] left-[20px]  border-l-3 border-white border-t-3 w-20 h-20"></div>
-      </Link>
+      <Link href="/" className=" fixed w-42 h-20  top-[20px] left-[20px] "></Link>
       {/* <nav className="fixed  top-5 w-full flex items-center justify-center gap-2">
         <a href="">[Home</a>
         <a href="">Portfolio</a>

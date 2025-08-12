@@ -1,11 +1,17 @@
 import React from "react";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 
+//TODO
+// make the menu close when navigating
+
 gsap.registerPlugin(SplitText);
 
-const Menu = ({ isMenuOpen, className = '' }) => {
+const Menu = ({setIsMenuOpen, isMenuOpen, className = '' }) => {
+  
+  const homeRef = useRef(null);
   const portfolioRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
@@ -16,9 +22,8 @@ const Menu = ({ isMenuOpen, className = '' }) => {
     const menu = menuRef.current;
 
     // Split the text into characters
-    const portfolioSplit = new SplitText(portfolioRef.current, {
-      type: "chars",
-    });
+    const homeSplit = new SplitText(homeRef.current, { type: "chars",});
+    const portfolioSplit = new SplitText(portfolioRef.current, { type: "chars",});
     const aboutSplit = new SplitText(aboutRef.current, { type: "chars" });
     const contactSplit = new SplitText(contactRef.current, { type: "chars" });
     if (isMenuOpen) {
@@ -39,10 +44,18 @@ const Menu = ({ isMenuOpen, className = '' }) => {
     }
 
     if (
-      (isMenuOpen && portfolioRef.current) ||
+      (isMenuOpen && homeRef.current ) ||  portfolioRef.current ||
       aboutRef.current ||
       contactRef.current
     ) {
+      gsap.from(homeSplit.chars, {
+        opacity: 0,
+        y: -20,
+        stagger: 0.05,
+        duration: 0.2,
+        delay: 0.6,
+        ease: "power2.out",
+      });
       gsap.from(portfolioSplit.chars, {
         opacity: 0,
         y: -20,
@@ -77,6 +90,13 @@ const Menu = ({ isMenuOpen, className = '' }) => {
   }, [isMenuOpen]);
   // if (!isMenuOpen) return null;
 
+  const handleLinkClick = () => {
+    // setTimeout(() => {
+    //   setIsMenuOpen(false);
+    // }, 1000); // delay in ms before closing
+  };
+  
+
   return (
     <div
       ref={menuRef}
@@ -84,12 +104,22 @@ const Menu = ({ isMenuOpen, className = '' }) => {
     >
       <nav className="uppercase flex flex-col text-white/75   justify-between h-full text-5xl">
         <div className="flex flex-col   items-end">
-          <a ref={portfolioRef} href="" className="hover:text-white w-fit ">
+        <Link
+          onClick={handleLinkClick}
+        ref={homeRef} href="/" className="hover:text-white w-fit ">
+            Home
+          </Link>
+          <Link
+            onClick={handleLinkClick}
+
+          ref={portfolioRef} href="/portfolio" className="hover:text-white w-fit ">
             Portfolio
-          </a>
-          <a ref={aboutRef} href="" className="hover:text-white w-fit ">
+          </Link>
+          <Link 
+            onClick={handleLinkClick}
+          ref={aboutRef} href="/about" className="hover:text-white w-fit ">
             About
-          </a>
+          </Link>
         </div>
         <div className="w-full flex flex-col items-start  text-9xl ">
           <a ref={contactRef} className="self-start hover:text-white  " href="">
