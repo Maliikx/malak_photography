@@ -1,8 +1,9 @@
 'use client'
 import { getCalApi } from "@calcom/embed-react";
 import React, { useEffect } from "react";
+import FlipBtn from "./FlibBtn";
 
-const BookingButton = ({children, ref, className=''}) => {
+const BookingButton = ({children, ref, className='', hoverStyle =''}) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi();
@@ -31,9 +32,11 @@ const BookingButton = ({children, ref, className=''}) => {
     })();
   }, []);
   return(
-    <button ref={ref} data-cal-link="malak-photography/photo-session" className={`cursor-pointer ${className}`}>
+    <FlipBtn
+    hoverStyle={hoverStyle}
+    ref={ref} data-cal-link="malak-photography/photo-session" className={`cursor-pointer ${className}`}>
       {children}
-      </button>
+      </FlipBtn>
   )
 
 }

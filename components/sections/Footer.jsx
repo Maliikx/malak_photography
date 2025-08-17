@@ -23,7 +23,9 @@ const Footer = () => {
         </ul>
         
 
-      <BookingButton className=" font-bold text-white  uppercase px-10 py-5 border-white bg-black  rounded-2xl text-4xl">
+      <BookingButton
+      hoverStyle='font-bold text-black  uppercase px-10 py-5 border-white bg-white  rounded-2xl text-4xl'
+      className=" font-bold text-white  uppercase px-10 py-5 border-white bg-black  rounded-2xl text-4xl">
        click!
       </BookingButton>
       {/* <button data-cal-link="malak-photography/photo-session" className="cursor-pointer text- px-10 py-5 border-black border-2 rounded-md text-4xl">
