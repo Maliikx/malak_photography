@@ -1,5 +1,4 @@
 "use client";
-import Menu from "@/components/Menu";
 import Services from "@/components/sections/Services";
 import Image from "next/image";
 import React from "react";

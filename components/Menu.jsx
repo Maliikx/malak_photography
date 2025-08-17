@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import BookingButton from "./BookingButton";
 
 //TODO
 // make the menu close when navigating
@@ -122,9 +123,9 @@ const Menu = ({setIsMenuOpen, isMenuOpen, className = '' }) => {
           </Link>
         </div>
         <div className="w-full flex flex-col items-start  text-9xl ">
-          <a ref={contactRef} className="self-start hover:text-white  " href="">
+          <BookingButton ref={contactRef} className="self-start hover:text-white  " href="">
             Book now
-          </a>
+          </BookingButton>
 
           <div className="flex flex-row text-xl gap-6 justify-end">
             <h2>Instagram</h2>
