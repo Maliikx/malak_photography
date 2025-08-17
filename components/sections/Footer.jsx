@@ -12,6 +12,11 @@ const Footer = () => {
         <h1 className="w-[90%] text-center  text-2xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl select-none">
           YOUR LOCAL PHOTOGRAPHER IS <span className=" font-bold">ONE CLICK AWAY!</span>
         </h1>
+        <BookingButton
+      hoverStyle='font-bold text-black  uppercase px-10 py-5  bg-white  rounded-2xl text-4xl'
+      className=" font-bold text-white  uppercase px-10 py-5 border-white bg-black  rounded-2xl text-4xl">
+       click!
+      </BookingButton>
       <AnimatedLine/>
 
         <ul className="flex  flex-row text-lg w-full  justify-between">
@@ -23,11 +28,7 @@ const Footer = () => {
         </ul>
         
 
-      <BookingButton
-      hoverStyle='font-bold text-black  uppercase px-10 py-5  bg-white  rounded-2xl text-4xl'
-      className=" font-bold text-white  uppercase px-10 py-5 border-white bg-black  rounded-2xl text-4xl">
-       click!
-      </BookingButton>
+     
       {/* <button data-cal-link="malak-photography/photo-session" className="cursor-pointer text- px-10 py-5 border-black border-2 rounded-md text-4xl">
         Click
       </button> */}
