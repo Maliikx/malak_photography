@@ -123,7 +123,7 @@ const Menu = ({setIsMenuOpen, isMenuOpen, className = '' }) => {
           </Link>
         </div>
         <div className="w-full flex flex-col items-start  text-9xl ">
-          <BookingButton ref={contactRef} className="self-start hover:text-white  " href="">
+          <BookingButton ref={contactRef} hoverStyle="self-start hover:text-white  cursor-pointer" className="self-start hover:text-white  cursor-pointer">
             Book now
           </BookingButton>
 
